@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="2.5"
+ xmlns="http://java.sun.com/xml/ns/javaee"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+  http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+ <display-name>Filter WAR example</display-name>
+ <context-param>
+  <description>throwableattribute to match JDBCAccessLogFilter</description>
+  <param-name>throwableattribute</param-name>
+  <param-value>Throwable</param-value>
+ </context-param>
+ <filter>
+  <display-name>Main JDBCAccessLogFilter</display-name>
+  <filter-name>JDBCAccessLogFilter</filter-name>
+  <filter-class>info.bobkirby.valve.JDBCAccessLogFilter</filter-class>
+  <init-param>
+   <description>DataSource to override JDBC connection info</description>
+   <param-name>DataSource</param-name>
+   <param-value>java:/DefaultDS</param-value>
+  </init-param>
+  <init-param>
+   <description>Example PostgreSQL JDBC database connection URL</description>
+   <param-name>connection-url</param-name>
+   <param-value>jdbc:postgresql://postgres:5432/postgres</param-value>
+  </init-param>
+  <init-param>
+   <description>JDBC database connection user name</description>
+   <param-name>user-name</param-name>
+   <param-value>*TBD*</param-value>
+  </init-param>
+  <init-param>
+   <description>JDBC database connection password</description>
+   <param-name>password</param-name>
+   <param-value>*TBD*</param-value>
+  </init-param>
+  <init-param>
+   <description>JDBC database connection driver class name</description>
+   <param-name>driver-class</param-name>
+   <param-value>org.postgresql.Driver</param-value>
+  </init-param>
+  <init-param>
+   <description>Database table name</description>
+   <param-name>tableName</param-name>
+   <param-value>access</param-value>
+  </init-param>
+  <init-param>
+   <description>Throwable attribute for rootcause trace</description>
+   <param-name>throwableattribute</param-name>
+   <param-value>Throwable</param-value>
+  </init-param>
+  <init-param>
+   <description>Comma-separated database table column names</description>
+   <param-name>columns</param-name>
+   <param-value>&quot;timestamp&quot;=timestampkey, remotehost(15)=remoteaddr,
+query(2048)=requesturi, &quot;method&quot;(8), status, username(16)=remoteuser,
+bytes=contentcountlengthinteger, virtualhost=servername(64), serverport,
+referer(1028)=referertext, useragent(512)=useragenttext,rootcausetrace(3)
+  </param-value>
+  </init-param>
+  <init-param>
+   <description>Debugging switch</description>
+   <param-name>debug</param-name>
+   <param-value>true</param-value>
+  </init-param>
+ </filter>
+ <filter-mapping>
+  <filter-name>JDBCAccessLogFilter</filter-name>
+  <url-pattern>/*</url-pattern>
+ </filter-mapping>
+ <servlet>
+  <description>Default welcome page</description>
+  <display-name>Welcome</display-name>
+  <servlet-name>welcome.htm</servlet-name>
+  <jsp-file>/welcome.jsp</jsp-file>
+ </servlet>
+ <servlet>
+  <description>Internal error 500 page</description>
+  <display-name>error500</display-name>
+  <servlet-name>error500.htm</servlet-name>
+  <jsp-file>/error500.jsp</jsp-file>
+  <init-param>
+    <description>throwableattribute to match JDBCAccessLogFilter</description>
+    <param-name>throwableattribute</param-name>
+    <param-value>Throwable</param-value>
+  </init-param>
+ </servlet>
+ <servlet>
+  <description>Show test results</description>
+  <display-name>ShowTest</display-name>
+  <servlet-name>testit.htm</servlet-name>
+  <jsp-file>/testit.jsp</jsp-file>
+ </servlet>
+ <servlet-mapping>
+  <servlet-name>welcome.htm</servlet-name>
+  <url-pattern>/welcome.htm</url-pattern>
+ </servlet-mapping>
+ <servlet-mapping>
+  <servlet-name>error500.htm</servlet-name>
+  <url-pattern>/error500.htm</url-pattern>
+ </servlet-mapping>
+ <servlet-mapping>
+  <servlet-name>testit.htm</servlet-name>
+  <url-pattern>/testit.htm</url-pattern>
+ </servlet-mapping>
+ <servlet-mapping>
+  <servlet-name>Javadoc</servlet-name>
+  <url-pattern>/doc/*</url-pattern>
+ </servlet-mapping>
+ <welcome-file-list>
+  <welcome-file>welcome.htm</welcome-file>
+ </welcome-file-list>
+ <error-page>
+  <exception-type>java.lang.Exception</exception-type>
+  <location>/error500.jsp</location>
+ </error-page>
+</web-app>
