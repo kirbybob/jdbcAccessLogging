@@ -75,6 +75,8 @@ These capabilities support many use cases.
 
 Distribution
 ------------
+[Filter and Valve JavaDoc](example.war/doc/index.html)
+
 When used as a Filter,
 the archive presented to the server may include the files.
 For example,
@@ -140,18 +142,61 @@ whose implementations are not always compatible with each other.
 
 Building
 --------
-Facade
+The software was primarily built with a Mac OS X version of
+Eclipse Java EE IDE for Web Developers, Kepler Service Release 2,
+which suppresses the details of the compilation classpath.
+Since multiple versions were being created,
+appropriate files for each version were moved in or out of a project
+with defaults mostly set for Java 1.5 (5.0),
+which allowed compiled classes to be captured.
+A Maven POM.xml might be created to handle many versions
+but was not attempted.
 
-javac -source 1.5 -Xlint:unchecked
-deploy/jbossweb.sar/jbossweb.jar
-common/lib/servlet-api.jar
+* __Java EE7 and beyond__
+  Support for later Java and JavaEE versions were similarly compiled
+  with a Mac OS X version of Eclipse Java EE IDE, 2019-09R.
 
-Versions
+* __JavaDoc__
+  The Mac OS X 10.6.8 version of javadoc (standard Doclet 1.6.0_65)
+  with Eclipse provided arguments:
+  ```
+  javadoc -source 1.5 \
+   -windowtitle "JDBC Access Log Filter and Valve files" \
+   -tag copyright
+  ```
+
+* __Facade__
+  The JBoss 5.1GA Tomcat modifications were hand-crafted as an experiment,
+  which attempted to get around reflection security restrictions.
+  Such modifications could risk production systems.
+  After exploding `jbossweb.sar/jbossweb.jar`,
+  basic compilation was done with
+  ```
+  javac -source 1.5 -Xlint:unchecked
+  ```
+  on jbossweb.sar/jbossweb.jar/org.apache.catalina.connector.ResponseFacade
+  in the "deploy" directory.
+  The classpath included `common/lib/servlet-api.jar`,
+  which included just enough of the Java EE support, and `jbossweb.jar`.
 
 Testing
 --------
-wide.sql
-testit.jsp
+Only off-line integrated testing was done: no unit testing or test frameworks.
+The DDL `wide.sql` began a wide range of field (column) tests
+for the PostgreSQL environment.
+The DDL `narrow.sql` sets up a smaller day-to-day environment.
+Modifications should be straightfoward for other relational databases.
+
+Relational databases that do not support arrays may use
+character large objects (CLOBs) instead with either standard large object
+or JavaScript Object Notation (JSON) field types.
+
+The web archive (WAR) `example.war` includes a Java server page (JSP)
+`testit.jsp`, which generates an error with a distinct root cause,
+which forwards to the `error.jsp` error-handling JSP servlet.
+In addition to filter configuration, [`web.xml`](example.war/WEB-INF/web.xml)
+includes a "throwableattribute" `<context-param>` to support the few errors
+that may actually forward to the error page.
 
 Dependencies
 ------------
