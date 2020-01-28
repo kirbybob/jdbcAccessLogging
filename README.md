@@ -182,9 +182,11 @@ but was not attempted.
 Testing
 --------
 Only off-line integrated testing was done: no unit testing or test frameworks.
-The DDL `wide.sql` began a wide range of field (column) tests
+The DDL [`wide.sql`](src/main/test/ddl/wide.sql)
+began a wide range of field (column) tests
 for the PostgreSQL environment.
-The DDL `narrow.sql` sets up a smaller day-to-day environment.
+The DDL [`narrow.sql`](src/main/test/ddl/narrow.sql)
+sets up a smaller day-to-day environment.
 Modifications should be straightfoward for other relational databases.
 
 Relational databases that do not support arrays may use
@@ -192,8 +194,10 @@ character large objects (CLOBs) instead with either standard large object
 or JavaScript Object Notation (JSON) field types.
 
 The web archive (WAR) `example.war` includes a Java server page (JSP)
-`testit.jsp`, which generates an error with a distinct root cause,
-which forwards to the `error.jsp` error-handling JSP servlet.
+[`testit.jsp`](example.war/testit.jsp),
+which generates an error with a distinct root cause,
+which forwards to the [`error.jsp`](example.war/error.jsp)
+error-handling JSP servlet.
 In addition to filter configuration, [`web.xml`](example.war/WEB-INF/web.xml)
 includes a "throwableattribute" `<context-param>` to support the few errors
 that may actually forward to the error page.
