@@ -1,4 +1,4 @@
-﻿-- PostgreSQL 8.4.5
+-- PostgreSQL 8.4.5
 WITH p AS
 -- Parameters
 (SELECT 60 AS dys, -- Days in time interval
