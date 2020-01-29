@@ -3755,7 +3755,7 @@ public class JDBCAccessLogFilter implements Filter {
 
                     return response.getStringHeaderNames();
                 }});
-        m.put("responseheadernames", new DoArrayString() {
+        m.put("responseheadernamesclob", new DoArrayStringClob() {
                 public Collection<String> getObject (HttpServletRequest request,
                                                      FilterResponse response)
                     throws ServletException {
