@@ -56,7 +56,7 @@
 query(2048)=requesturi, &quot;method&quot;(8), status, username(16)=remoteuser,
 bytes=contentcountlengthinteger, virtualhost=servername(64), serverport,
 referer(1028)=referertext, useragent(512)=useragenttext,rootcausetrace(3)
-   </param-value>
+  </param-value>
   </init-param>
   <init-param>
    <description>Debugging switch</description>
@@ -80,9 +80,9 @@ referer(1028)=referertext, useragent(512)=useragenttext,rootcausetrace(3)
   <servlet-name>error500.htm</servlet-name>
   <jsp-file>/error500.jsp</jsp-file>
   <init-param>
-   <description>throwableattribute to match JDBCAccessLogFilter</description>
-   <param-name>throwableattribute</param-name>
-   <param-value>Throwable</param-value>
+    <description>throwableattribute to match JDBCAccessLogFilter</description>
+    <param-name>throwableattribute</param-name>
+    <param-value>Throwable</param-value>
   </init-param>
  </servlet>
  <servlet>
@@ -103,8 +103,12 @@ referer(1028)=referertext, useragent(512)=useragenttext,rootcausetrace(3)
   <servlet-name>testit.htm</servlet-name>
   <url-pattern>/testit.htm</url-pattern>
  </servlet-mapping>
+ <servlet-mapping>
+  <servlet-name>Javadoc</servlet-name>
+  <url-pattern>/doc/*</url-pattern>
+ </servlet-mapping>
  <welcome-file-list>
-  <welcome-file>welcome.jsp</welcome-file>
+  <welcome-file>welcome.htm</welcome-file>
  </welcome-file-list>
  <error-page>
   <exception-type>java.lang.Exception</exception-type>
