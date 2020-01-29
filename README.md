@@ -210,6 +210,14 @@ with the following minimums:
 * Java Enterprise Edition (EE) that runs on the JDK
 * JDBC for a relevant relational database management system (RDBMS)
 
+Issues
+------
+The octet length of output may only be reliable with Tomcat-based software,
+such as in the earlier JBoss versions, which counts output bytes.
+The JavaEE interface `javax.servlet.http.HttpServletResponse`
+does not include counts and containers do not uniformly include
+a "Content-Length" HTTP header.
+
 Copyright and License
 ---------------------
 Copyright © 2019 Robert L. Kirby. Some rights reserved.  
