@@ -103,10 +103,6 @@ referer(1028)=referertext, useragent(512)=useragenttext,rootcausetrace(3)
   <servlet-name>testit.htm</servlet-name>
   <url-pattern>/testit.htm</url-pattern>
  </servlet-mapping>
- <servlet-mapping>
-  <servlet-name>Javadoc</servlet-name>
-  <url-pattern>/doc/*</url-pattern>
- </servlet-mapping>
  <welcome-file-list>
   <welcome-file>welcome.htm</welcome-file>
  </welcome-file-list>
