@@ -56,7 +56,7 @@
 query(2048)=requesturi, &quot;method&quot;(8), status, username(16)=remoteuser,
 bytes=contentcountlengthinteger, virtualhost=servername(64), serverport,
 referer(1028)=referertext, useragent(512)=useragenttext,rootcausetrace(3)
-  </param-value>
+   </param-value>
   </init-param>
   <init-param>
    <description>Debugging switch</description>
