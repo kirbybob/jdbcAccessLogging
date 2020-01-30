@@ -143,7 +143,7 @@ an optional port number 5432, which is the default PostgreSQL port; and
 For some databases, the connection URL may be quite long,
 wrapping around its single line.
 Although some databases may accept a user name and password
-in the connection URL, other will only accept the user name and password
+in the connection URL, others will only accept the user name and password
 when provided as separate configuration items.
 </li>
 <li>Fully qualified JDBC driver class name string &lt;driver-class&gt;,
@@ -595,7 +595,7 @@ CREATE TABLE access (
  * <a href="http://bobkirby.info/">http://bobkirby.info/</a><br>
  * kirby dot bob separated with an "at" sign from gmail dot com, avoiding spam.
 <!-- Added option for processing Javadoc: -tag copyright -->
- * @copyright Copyright &copy; 2019 Robert L. Kirby. All rights reserved.
+ * @copyright Copyright &copy; 2020 Robert L. Kirby. All rights reserved.
  * <p>
  * The use and distribution terms for this software are covered by the
  * Eclipse Public License 1.0
@@ -615,7 +615,7 @@ CREATE TABLE access (
 
 public class JDBCAccessLogFilter implements Filter {
     @SuppressWarnings("unused") private static final String copyright
-        = "Copyright © 2019 Robert L. Kirby";
+        = "Copyright © 2020 Robert L. Kirby";
 
     /**
      * Default string to use when truncating the Text type
