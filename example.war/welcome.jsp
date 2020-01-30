@@ -1,4 +1,4 @@
-<%-- Copyright © 2019 Robert L. Kirby
+<%-- Copyright © 2020 Robert L. Kirby
 --%><%@ page language="java"
   contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"
@@ -13,7 +13,7 @@
 <h2>Welcome to JDBCAccessLogFilter Testing</h2>
 <p>Generate a 500 error <a
  href="testit.htm" target="_top">testit.htm</a></p>
-<p>Javadoc for <a href="doc/index.htm">JDBC and DataSource Access Logs
+<p>Javadoc for <a href="doc/index.html">JDBC and DataSource Access Logs
 from Filters and Valves</a></p>
 </body>
 </html>
