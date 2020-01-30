@@ -210,6 +210,8 @@ names "java:/DefaultDS" as the first choice for making a database connection.
 If this DataSource is not available,
 then the configured database URL, username, and password
 will need editing for appropriate values.
+Either database connection will need an accessible database engine
+and a JDBC driver JAR installed for that engine.
 
 After `example.war` is deployed in running container software,
 such as an application server, like Tomcat, JBoss, or Wildfly,
@@ -247,7 +249,7 @@ a "Content-Length" HTTP header.
 
 Copyright and License
 ---------------------
-Copyright © 2019 Robert L. Kirby. Some rights reserved.  
+Copyright © 2020 Robert L. Kirby. Some rights reserved.  
 kirby dot bob separated with an "at" sign from gmail dot com.
 
 The use and distribution terms for this software are covered by the
