@@ -182,7 +182,7 @@ but was not attempted.
 Testing
 --------
 Only off-line integrated testing was done: no unit testing or test frameworks.
-The DDL [`wide.sql`](src/main/test/ddl/wide.sql)
+The data definition language (DDL) [`wide.sql`](src/main/test/ddl/wide.sql)
 began a wide range of field (column) tests
 for the PostgreSQL environment.
 The DDL [`narrow.sql`](src/main/test/ddl/narrow.sql)
@@ -192,8 +192,35 @@ Modifications should be straightfoward for other relational databases.
 Relational databases that do not support arrays may use
 character large objects (CLOBs) instead with either standard large object
 or JavaScript Object Notation (JSON) field types.
+If so, JDBCAccessLogFilter field (column) configuration for arrays
+may need to be modified with the "clob" suffix specified in the
+[JavaDoc](example.war/doc/index.html).
 
-The web archive (WAR) `example.war` includes a Java server page (JSP)
+The test web archive (WAR) `example.war` requires
+a connection to an appropriate database table,
+which, by default is named "access" without a specified schema
+in the WAR configuration file [`web.xml`](example.war/WEB-INF/web.xml).
+Either of the DDL files [`narrow.sql`](src/main/test/ddl/narrow.sql)
+or [`wide.sql`](src/main/test/ddl/wide.sql)
+could create a table with fields (columns)
+that would satisfy the default JDBCAccessLogFilter configuration.
+
+The configuration file [`web.xml`](example.war/WEB-INF/web.xml)
+names "java:/DefaultDS" as the first choice for making a database connection.
+If this DataSource is not available,
+then the configured database URL, username, and password
+will need editing for appropriate values.
+
+After `example.war` is deployed in running container software,
+such as an application server, like Tomcat, JBoss, or Wildfly,
+a browser displays its web pages with a URL like
+[`http://127.0.0.1:8080/example/`](http://127.0.0.1:8080/example/),
+where typically only the localhost "127.0.0.1" is initially reachable,
+a non-priviledged port like 8080 is configured initially, and, by default,
+since [`web.xml`](example.war/WEB-INF/web.xml) configures no `<context-root>`,
+the WAR exploded directory name "example" is used.
+
+The directory `example.war` includes a Java server page (JSP)
 [`testit.jsp`](example.war/testit.jsp),
 which generates an error with a distinct root cause,
 which forwards to the [`error.jsp`](example.war/error.jsp)
