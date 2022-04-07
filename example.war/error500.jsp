@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     isErrorPage="true"
-%><%-- Copyright © 2019 Robert L. Kirby
+%><%-- Copyright © 2022 Robert L. Kirby
 Some earlier servers do not set the status to 500 until after Filter processing.
 --%><html xmlns="http://www.w3.org/1999/xhtml" lang="en" >
 <head>
@@ -27,13 +27,14 @@ if ((null == obj || ! (obj instanceof Throwable)) && null != exception) {
   System.err.print(obj + " not setting attribute=" + attrName
                    + " for " + exception);
 }
-%><p>Caught internal error: <pre><%= exception %></pre><%
+%><p>Caught internal error:</p>
+<pre><%= exception %></pre><%
 for (Throwable cause = null == exception ? null : exception.getCause();
      null != cause; cause = cause.getCause()) {
-%><br>
-with cause: <%= cause %><%
+%><br />
+with cause: <code><%= cause %></code><%
 }
-%></p><%
+%><br /><%
 String referer = request.getHeader("referer");
 if (null != referer && 0 < referer.length()) {
 %><p>Referring page: <%= referer %></p>
