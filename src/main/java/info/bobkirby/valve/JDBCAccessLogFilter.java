@@ -6198,7 +6198,7 @@ public class JDBCAccessLogFilter implements Filter {
             throw new IOException(sb.toString());
         }
         if (debugEnabled) {
-            debug("Leaving process");
+            debug("Leaving " + this + " process on " + response);
         }
     }
 
